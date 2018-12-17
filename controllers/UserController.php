@@ -27,7 +27,7 @@ class UserController
         $email = '';
         if (isset($_POST['submit'])) {
             $email = User::login($_POST['email'], $_POST['password']);
-            if ($email != null && isset($_POST['remember']) && $_POST['remeber'] == "on") {
+            if ($email != null && isset($_POST['remeber']) && $_POST['remeber'] == "on") {
                 User::remembered($email);
             } else {
                 setcookie('Email',  $email, time() + 60);
