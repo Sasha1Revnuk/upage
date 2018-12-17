@@ -11,10 +11,10 @@ if ($registration == false || is_array($registration)) {
     }
     echo '<h1>Registration</h1>';
     echo '<form action="#" method="POST">';
-    echo '<input type="email" name="email" placeholder="Email" value="' . $email . '" ><br />';
+    echo '<input type="email" name="email" placeholder="Email" required value="' . $email . '" ><br />';
     echo '<input type="password" name="password" placeholder="Password" required value="' . $password . '"><br />';
     echo '<input type="password" name="cpassword" placeholder="Confirm Password" required value="' . $confirmPassword . '"><br />';
-    echo '<input type="text" name="name" placeholder="Your name" value="' . $name . '"><br />';
+    echo '<input type="text" name="name" placeholder="Your name" required value="' . $name . '"><br />';
     echo '<input type="submit" name="submit" value="Do it!">';
     echo '</form>';
 } else if ($registration == true) {
