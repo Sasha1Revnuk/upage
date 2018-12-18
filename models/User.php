@@ -131,5 +131,93 @@ class User
     {
         session_destroy();
         setcookie('Email', '', time() - 60 * 60 * 24 * 30 * 12);
+
     }
+    /*
+    *End logout
+    */
+
+    /*
+    *Password recovery
+    */
+
+    public static function recoveryPassword($email)
+    {
+        if (empty($email)) {
+            return null;
+        }
+
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('SELECT id FROM users WHERE email=?');
+        $sql->bind_param('s', $email);
+        $sql->execute();
+        $result = $sql->get_result();
+        $result = mysqli_fetch_array($result);
+        if (!empty($result['id'])) {
+            $newPass = User::sendNewPassword($email);
+            if (!User::changePassword($email, $newPass)) {
+                return null;
+            }
+
+            return true;
+        } else {
+            return null;
+        }
+
+    }
+
+    private static function sendNewPassword($email)
+    {
+        $newPass = User::passwordGeneration();
+        $to = $email;
+        $subject = "Password recovery";
+        $headers  = 'MIME-Version: 1.0' . "\r\n";
+        $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+        $headers .= 'From: UPage' . "\r\n";
+        $message = '
+        <html>
+            <head>
+                <title>Password recovery</title>
+            </head>
+            <body>
+            <p>Hi, You have applied for a password change. This your new password <b>' . $newPass . '</b></p>
+            <p>Use a temporary password for authentication and create your own in your account</p>
+            <p>Have a nice day!</p>
+            </body>
+        </html>
+        ';
+        mail($to, $subject, $message, $headers);
+        return  $newPass;
+    }
+
+    private static function passwordGeneration()
+    {
+        $password = null;
+        $chars = "qazxswedcvfrtgbnhyujmkiolp1234567890QAZXSWEDCVFRTGBNHYUJMKIOLP";
+        $max = 10;
+        $size = (StrLen($chars) - 1);
+        while ($max--) {
+            $password .= $chars[rand(0, $size)];
+        }
+
+        return $password;
+
+    }
+
+    private static function changePassword($email, $password)
+    {
+        var_dump($email);
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $hash = password_hash($password, PASSWORD_DEFAULT);
+        $sql = $connect->prepare('UPDATE users SET password=? WHERE email=?');
+        $sql->bind_param('ss', $hash, $email);
+        return $sql->execute();
+
+    }
+    /*
+    * End Password recovery
+    */
+
 }

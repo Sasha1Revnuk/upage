@@ -6,5 +6,6 @@ return array(
     'registration' => 'user/registration',
     'login' => 'user/login',
     'logout' => 'user/logout',
+    'recovery' => 'user/recovery',
     '' => 'site/index'
 );

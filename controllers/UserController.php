@@ -3,6 +3,9 @@ class UserController
 {
     public function actionRegistration()
     {
+        if (isset($_COOKIE['Email'])) {
+            header('Location: /');
+        }
         $email = '';
         $password = '';
         $confirmPassword = '';
@@ -24,6 +27,9 @@ class UserController
 
     public function actionLogin()
     {
+        if (isset($_COOKIE['Email'])) {
+            header('Location: /');
+        }
         $email = '';
         if (isset($_POST['submit'])) {
             $email = User::login($_POST['email'], $_POST['password']);
@@ -45,5 +51,23 @@ class UserController
     {
         User::logout();
         header('Location: /');
+
+    }
+
+    public function actionRecovery()
+    {
+        if (isset($_POST['submit']) && !empty($_POST['email'])) {
+            $request = User::recoveryPassword($_POST['email']);
+            if ($request != true) {
+                echo '<p>Email not exist!</p>';
+            } else {
+                include_once ROOT . '/views/user/successfull-recovery.php';
+                return true;
+            }
+        }
+
+        include_once ROOT . '/views/user/recovery.php';
+        return true;
+
     }
 }
