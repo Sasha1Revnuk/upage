@@ -7,5 +7,6 @@ return array(
     'login' => 'user/login',
     'logout' => 'user/logout',
     'recovery' => 'user/recovery',
+    'admin/main' => 'admin/main',
     '' => 'site/index'
 );

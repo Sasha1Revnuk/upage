@@ -19,8 +19,8 @@ class UserController
         if ($registration == true && is_array($registration) == false) {
             User::createDir($_POST['email']);
         }
-
-        include_once ROOT . '/views/user/registration.php';
+        $title = 'Sign up!';
+        include_once ROOT . '/views/templates/site/regist.php';
         return true;
 
     }
@@ -42,8 +42,8 @@ class UserController
         if ($email != null) {
             header('Location: /');
         }
-
-        include_once ROOT . '/views/user/login.php';
+        $title = 'Sign in!';
+        include_once ROOT . '/views/templates/site/login.php';
         return true;
     }
 
@@ -61,12 +61,13 @@ class UserController
             if ($request != true) {
                 echo '<p>Email not exist!</p>';
             } else {
-                include_once ROOT . '/views/user/successfull-recovery.php';
+                $title = "Successfull recovery";
+                include_once ROOT . '/views/templates/site/successfull-recovery.php';
                 return true;
             }
         }
-
-        include_once ROOT . '/views/user/recovery.php';
+        $title = "Password recovery";
+        include_once ROOT . '/views/templates/site/recovery.php';
         return true;
 
     }

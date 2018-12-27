@@ -207,7 +207,6 @@ class User
 
     private static function changePassword($email, $password)
     {
-        var_dump($email);
         $db = Connection::getInstance();
         $connect = $db->get();
         $hash = password_hash($password, PASSWORD_DEFAULT);

@@ -3,7 +3,9 @@ class SiteController
 {
     public function actionIndex()
     {
+        // var_dump($_SESSION);
         $user = User::checkAuthorization();
-        require_once ROOT . '/views/site/index.php';
+        $title = 'Main page';
+        require_once ROOT . '/views/templates/site/index.php';
     }
 }
