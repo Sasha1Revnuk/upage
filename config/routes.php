@@ -8,5 +8,6 @@ return array(
     'logout' => 'user/logout',
     'recovery' => 'user/recovery',
     'admin/main' => 'admin/main',
+    'admin/category-add' =>'adminCategories/add',
     '' => 'site/index'
 );

@@ -40,6 +40,7 @@ class UserController
             }
         }
         if ($email != null) {
+            
             header('Location: /');
         }
         $title = 'Sign in!';

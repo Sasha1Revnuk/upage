@@ -30,7 +30,7 @@
 						<input type="password" value="" name="password" class="email"  placeholder="type password" required="" value=" <?=$password?>">
 			   			<div class="flex-content">
 			   				<input type="submit" name="submit" value="Sign In!">
-			   				<span><input type="checkbox" name="remember" class="flex-1"><span style='padding-left:7px;'> </span>Remember me!</span>
+			   				<span><input type="checkbox" name="remeber" class="flex-1"><span style='padding-left:7px;'> </span>Remember me!</span>
 							<?php echo '<a href="/recovery">Forgot you password?</a><br />';?>
 						   </div>
 				</form>

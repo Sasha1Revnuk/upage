@@ -219,4 +219,23 @@ class User
     * End Password recovery
     */
 
+    public static function getId($email)
+    {
+        if (empty($email)) {
+            return null;
+        }
+
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('SELECT id FROM users WHERE email=?');
+        $sql->bind_param('s', $email);
+        $sql->execute();
+        $result = $sql->get_result();
+        $result = mysqli_fetch_array($result);
+        if (empty($result['id'])) {
+            return null;
+        } 
+            return $result['id'];
+
+    }
 }
