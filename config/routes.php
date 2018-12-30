@@ -9,5 +9,7 @@ return array(
     'recovery' => 'user/recovery',
     'admin/main' => 'admin/main',
     'admin/category-add' =>'adminCategories/add',
+    'admin/link-add' =>'adminCategories/addLink',
+    'admin/category-list' => 'adminCategories/categoryList',
     '' => 'site/index'
 );

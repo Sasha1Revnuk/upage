@@ -11,9 +11,9 @@
                                             <li>
                                                 <a href="#"><i class="fa fa-file-text"></i><span class="text">Categories</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
-                                                    <li><a href="category-list"><i class="fa fa-list"></i><span class="text">List</span></a></li>
+                                                    <li><a href="/admin/category-list"><i class="fa fa-list"></i><span class="text">List</span></a></li>
                                                     <li><a href="/admin/category-add"><i class="fa fa-plus-square-o"></i><span class="text">Add new category</span></a></li>
-                                                    <li><a href="link-add"><i class="fa fa-tags"></i><span class="text">Add new link</span></a></li>
+                                                    <li><a href="/admin/link-add"><i class="fa fa-tags"></i><span class="text">Add new link</span></a></li>
                                                 </ul>
                                             </li>
                                             <li>
