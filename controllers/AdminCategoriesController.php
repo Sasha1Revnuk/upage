@@ -66,17 +66,42 @@ class AdminCategoriesController extends StandartController
         return true;
     }
 
-    public static function categoryList()
+    public static function actionCategoryList()
     {
         $this->status = false;
         $this->errors = array();
         $this->message = '';
-        $title = 'Add new link';
+        $title = 'Categories';
         $breadCrumb = [
             'Cateories' => '/admin/category-list',
         ];
+       
 
-        include_once ROOT . '/views/templates/admin/link-add.php';
+        if (isset($_POST['Save'])) {
+            $idArray = array();
+            $nameArray = array();
+            $i=0;
+            unset($_POST['Save']);
+            foreach ($_POST as $category) {
+                $i++;
+                if ($i % 2 == 0) {
+                    $nameArray[] = $category;
+                } else {
+                    $idArray[] = $category;
+                }
+            }
+            // for ($i = 0; $i < (count($_POST)-1) / 2; $i++) {
+            //     $idArray[] = $_POST['id' . $i];
+            //      = $_POST['name' . $i];
+            // }
+            list($idArray, $nameArray) = Categories::checkId($idArray, $nameArray, $this->userId);
+            Categories::updateCategories($idArray, $nameArray, $this->userId);
+        }
+        $categories = Categories::getCategoriesById($this->userId);
+        if (empty($categories)) {
+            $this->errors[] = 'You need to create category! <a href="/admin/category-add">Do it!</a>';
+        }
+        include_once ROOT . '/views/templates/admin/category-list.php';
         return true;
     }
 }
