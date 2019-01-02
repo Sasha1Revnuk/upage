@@ -96,6 +96,7 @@ class AdminCategoriesController extends StandartController
             // }
             list($idArray, $nameArray) = Categories::checkId($idArray, $nameArray, $this->userId);
             Categories::updateCategories($idArray, $nameArray, $this->userId);
+            header('Location: /admin/category-list');
         }
         $categories = Categories::getCategoriesById($this->userId);
         if (empty($categories)) {
