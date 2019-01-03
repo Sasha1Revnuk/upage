@@ -7,7 +7,7 @@
                                     </div>
                                     <div class="sidebar-menu">
                                         <ul class="nav nav-sidebar">
-                                            <li><a href="main"><i class="fa fa-laptop"></i><span class="text"> Main</span></a></li>
+                                            <li><a href="/main"><i class="fa fa-laptop"></i><span class="text"> Main</span></a></li>
                                             <li>
                                                 <a href="#"><i class="fa fa-file-text"></i><span class="text">Categories</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
