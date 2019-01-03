@@ -66,18 +66,36 @@ class AdminCategoriesController extends StandartController
         return true;
     }
 
-    public static function actionCategoryList()
+    public static function actionCategoryList($action=null, $id=null, $status=null)
     {
         $this->status = false;
         $this->errors = array();
         $this->message = '';
         $title = 'Categories';
         $breadCrumb = [
-            'Cateories' => '/admin/category-list',
+            'Categories' => '/admin/category-list',
         ];
-       
 
-        if (isset($_POST['Save'])) {
+        if($action == 'delete' && $status == null){
+            $categoryName = Categories::getNameById($id);
+            echo '<script> 
+            var r=confirm(\'Do you want to delete category ' . $categoryName .' ?\');
+            if(r){
+                document.location.href = \'/admin/category-list/delete/' . $id . '/ok\';
+            } else {
+                document.location.href = \'/admin/category-list\';
+            }
+                </script>';
+            
+        } else if ($action == 'delete' && $status == 'ok') {
+            Categories::delete($id);
+            header('Location: /admin/category-list');
+        }
+        $categories = Categories::getCategoriesById($this->userId);
+        if (empty($categories)) {
+            $this->errors[] = 'You need to create category! <a href="/admin/category-add">Do it!</a>';
+        }
+        if (isset($_POST['Save']) && !empty($categories)) {
             $idArray = array();
             $nameArray = array();
             $i=0;
@@ -90,18 +108,25 @@ class AdminCategoriesController extends StandartController
                     $idArray[] = $category;
                 }
             }
-            // for ($i = 0; $i < (count($_POST)-1) / 2; $i++) {
-            //     $idArray[] = $_POST['id' . $i];
-            //      = $_POST['name' . $i];
-            // }
+
             list($idArray, $nameArray) = Categories::checkId($idArray, $nameArray, $this->userId);
             Categories::updateCategories($idArray, $nameArray, $this->userId);
             header('Location: /admin/category-list');
         }
-        $categories = Categories::getCategoriesById($this->userId);
-        if (empty($categories)) {
-            $this->errors[] = 'You need to create category! <a href="/admin/category-add">Do it!</a>';
-        }
+        
+        include_once ROOT . '/views/templates/admin/category-list.php';
+        return true;
+    }
+
+    public static function actionDelete($id) {
+        $this->status = false;
+        $this->errors = array();
+        $this->message = '';
+        $title = 'Categories';
+        $breadCrumb = [
+            'Cateories' => '/admin/category-list',
+        ];
+      
         include_once ROOT . '/views/templates/admin/category-list.php';
         return true;
     }

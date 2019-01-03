@@ -11,6 +11,9 @@
 							</div>
 						</div>
 						<div class="panel-body">
+						<?php
+									Admin::progress($this->errors, $this->status, $this->message);
+									?>
 							<form action="" method="POST">
 								<div style="display: flex; justify-content: flex-end;">
 								<div class="col-md-1">
@@ -83,7 +86,7 @@
 										 	for ($i = 0; $i < count($categories); $i++) {
 												 echo '<tr>';
 													echo '<td><input type="hidden" name="id' . $i . '" class="form-control" value="' . $categories[$i]['id'] . '"><div class="col-lg-4 col-md-4"> <input type="text" name="name' . $i . '" class="form-control" value="' . $categories[$i]['name'] . '"></div></td>';
-													echo '<td><a class="btn btn-info" href="/admin/category-edit/' . $categories[$i]['id'] . '"><i class="fa fa-edit "></i></a>  <a class="btn btn-danger" href="table.html#"><i class="fa fa-trash-o "></i></a></td>'; 
+													echo '<td><a class="btn btn-info" href="/admin/category-list/delete/' . $categories[$i]['id'] . '"><i class="fa fa-edit "></i></a>  <a class="btn btn-danger" href="/admin/category-list/delete/' . $categories[$i]['id'] . '"><i class="fa fa-trash-o "></i></a></td>'; 
 													 
 												echo '</tr>';
 											 }
