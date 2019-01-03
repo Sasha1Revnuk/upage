@@ -130,4 +130,63 @@ class AdminCategoriesController extends StandartController
         include_once ROOT . '/views/templates/admin/category-list.php';
         return true;
     }
+
+    public static function actionEdit($id, $action=null, $linkId=null, $status=null)
+    {
+        $this->status = false;
+        $this->errors = array();
+        $this->message = '';
+        $categoryName = Categories::getNameById($id);
+        $title = $categoryName;
+        $breadCrumb = [
+            'Categories' => '/admin/category-list',
+            $categoryName => '',
+        ];
+
+        if($action == 'delete' && $status == null){
+            $linkName = Links::getNameById($linkId);
+            echo '<script> 
+            var r=confirm(\'Do you want to delete link ' . $linkName .' in category ' . $categoryName . '?\');
+            if(r){
+                document.location.href = \'/admin/category/edit/' .$id . '/delete/' . $linkId . '/ok\';
+            } else {
+                document.location.href = \'/admin/category/edit/' . $id . '\';
+            }
+                </script>';
+            
+        } else if ($action == 'delete' && $status == 'ok') {
+            Links::delete($linkId);
+            header('Location: /admin/category/edit/' . $id);
+        }
+
+        $links = Links::getLinksByCategoryId($id);
+        if (empty($links)) {
+            $this->errors[] = 'You need to create links! <a href="/admin/link-add">Do it!</a>';
+        }
+        if (isset($_POST['Save']) && !empty($links)) {
+            $idArray = array();
+            $nameArray = array();
+            $linkArray = array();
+            $i=0;
+            unset($_POST['Save']);
+            foreach ($_POST as $link) {
+                $i++;
+                if ($i == 1) {
+                    $idArray[] = $link;
+                } else if ($i == 2) {
+                    $nameArray[] = $link;
+                } else if ($i == 3) {
+                    $linkArray[] = $link;
+                    $i = 0;
+                }
+            }
+
+            list($idArray, $nameArray, $linkArray) = Links::checkId($idArray, $nameArray, $linkArray, $id);
+            Links::updateLinks($idArray, $nameArray, $linkArray, $id);
+            header('Location: /admin/category/edit/' . $id);
+        }
+
+        include_once ROOT . '/views/templates/admin/category-edit.php';
+        return true;
+    }
 }

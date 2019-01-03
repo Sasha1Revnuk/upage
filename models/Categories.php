@@ -69,6 +69,9 @@ class Categories
     public static function delete($id) {
         $db = Connection::getInstance();
         $connect = $db->get();
+        $sql = $connect->prepare('DELETE FROM links WHERE category_id=?');
+        $sql->bind_param('i', $id);
+        $sql->execute();
         $sql = $connect->prepare('DELETE FROM categories WHERE id=?');
         $sql->bind_param('i', $id);
         return $sql->execute();
