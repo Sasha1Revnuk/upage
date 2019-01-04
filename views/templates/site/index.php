@@ -8,116 +8,54 @@
    			<h1>Beautiful page for every day</h1>
 
    			<p class="lead">Design, create and enjoy!</p>
-
+			<?php
+			if($status == false) {
+				echo '<p class="lead">Create your links and make using much easyer!</p>';
+			}
+			?>
    		</div>   		
    	</div>
-
+<style>
+	a{
+		color:white;
+	}
+	a:visited{
+		color:white;
+	}
+	a:hover{
+		color:red;
+	}
+</style>
    	<div class="row features-content">
-
-   		<div class="features-list block-1-4 block-s-1-2 block-tab-full group">
-
+   		<div class="features-list block-1-4 block-s-1-2 block-tab-full group ">
+		   		<?php
+				if($status == true){
+					foreach ($categories as $category){
+				?>
 	      	<div class="bgrid feature">
 	            <div class="service-content">
-	            	 <h3 class="h05" >Free of Charge</h3>
+			
+	            	 <h3 class="h05" ><?=$category['name']?></h3>
 	            	 <ul class="links" id="links">
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
+					 <?php
+					for($i = 0; $i < count($links); $i++){
+						foreach($links[$i] as $link){
+							if($category['id'] == $link['category_id']){
+								echo '<li><a href="' . $link['link'] . '">' . $link['name'] . '</a></li>';
+							}
+							
+						}
+					}
+					 ?>
 	            	 </ul>
 		           
 	        			
 	            </div>	               
 
 			   </div> <!-- /bgrid -->
-
-				<div class="bgrid feature">
-	            <div class="service-content">
-	            	 <h3 class="h05">Free of Charge</h3>
-	            	 <ul>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 </ul>
-		           
-	        			
-	            </div>	               
-
-			   </div> <!-- /bgrid -->
-
-			 <div class="bgrid feature">
-	            <div class="service-content">
-	            	 <h3 class="h05">Free of Charge</h3>
-	            	 <ul>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 </ul>
-		           
-	        			
-	            </div>	               
-
-			   </div> <!-- /bgrid -->
-
-				<div class="bgrid feature">
-	            <div class="service-content">
-	            	 <h3 class="h05">Free of Charge</h3>
-	            	 <ul>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 </ul>
-		           
-	        			
-	            </div>	               
-
-			   </div> <!-- /bgrid -->
-
-			  <div class="bgrid feature">
-	            <div class="service-content">
-	            	 <h3 class="h05">Free of Charge</h3>
-	            	 <ul>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 </ul>
-		           
-	        			
-	            </div>	               
-
-			   </div><!-- /bgrid -->
-
-			  <div class="bgrid feature">
-	            <div class="service-content">
-	            	 <h3 class="h05">Free of Charge</h3>
-	            	 <ul>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 	<li><span>sdsfsdfsdf</span></li>
-	            	 </ul>
-		           
-	        			
-	            </div>	               
-
-			   </div>
-			    <!-- /bgrid -->
+				<?php
+				}}
+				?>
 
 	      </div> <!-- features-list -->
    		
