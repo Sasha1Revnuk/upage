@@ -1,5 +1,9 @@
-$(document).ready(function(){
-	/*------ Dropzone Init ------*/
-	$(".dropzone").dropzone();
-});
+$(document).ready(
+    function () {
+        /*------ Dropzone Init ------*/
+        $(".dropzone").dropzone();
+    }
+);
+
+
 

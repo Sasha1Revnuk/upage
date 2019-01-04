@@ -1759,8 +1759,8 @@ div.DTFC_LeftFootWrapper table {
   border-radius: 4px;
   direction: ltr;
   /*.dow {
-		border-top: 1px solid #ddd !important;
-	}*/
+        border-top: 1px solid #ddd !important;
+    }*/
 
 }
 .datepicker-inline {
@@ -2490,3 +2490,4 @@ div.DTFC_LeftFootWrapper table {
   cursor: pointer;
   width: 13px;
 }
+

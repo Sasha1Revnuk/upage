@@ -48,7 +48,7 @@ h6 {
 hr {
   border-top: 1px solid #eeeeee;
 }
-.main {  	
+.main {      
   background:#e6e8ea;
   padding: 70px 19px 10px 260px;
 }
@@ -2771,3 +2771,4 @@ ul.profile-details li div i {
 @media (min-width: 1200px) {
   
 }
+

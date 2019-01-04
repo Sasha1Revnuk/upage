@@ -7,7 +7,7 @@ class SiteController
         $status = false;
         $user = User::checkAuthorization();
         $title = 'Main page';
-        if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email']) && $_COOKIE['Email'] !='Guest'){
+        if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email']) && $_COOKIE['Email'] !='Guest') {
             $userId = User::getId($_COOKIE['Email']);
 
             $categories = Categories::getCategoriesById($userId);
@@ -21,7 +21,7 @@ class SiteController
         // echo '<pre>';
         // print_r($links);
         // echo '</pre>';
-        require_once ROOT . '/views/templates/site/index.php';
+        include_once ROOT . '/views/templates/site/index.php';
         return true;
     }
 }

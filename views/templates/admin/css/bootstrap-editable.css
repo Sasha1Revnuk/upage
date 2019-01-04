@@ -228,8 +228,8 @@ a.editable-click.editable-disabled:hover {
   border-radius: 4px;
   direction: ltr;
   /*.dow {
-		border-top: 1px solid #ddd !important;
-	}*/
+        border-top: 1px solid #ddd !important;
+    }*/
 
 }
 .datepicker-inline {
@@ -661,3 +661,4 @@ a.editable-click.editable-disabled:hover {
   margin-left: -5px;
   margin-right: -5px;
 }
+

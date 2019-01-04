@@ -9,7 +9,7 @@ class CategoriesController
         //модель
         $categoriesList = Categories::getCategoriesList();
         //вид
-        require_once ROOT . '/views/categories/index.php';
+        include_once ROOT . '/views/categories/index.php';
         return true;
 
     }

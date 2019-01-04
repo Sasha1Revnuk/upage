@@ -76,7 +76,7 @@ class AdminCategoriesController extends StandartController
             'Categories' => '/admin/category-list',
         ];
 
-        if($action == 'delete' && $status == null){
+        if($action == 'delete' && $status == null) {
             $categoryName = Categories::getNameById($id);
             echo '<script> 
             var r=confirm(\'Do you want to delete category ' . $categoryName .' ?\');
@@ -118,7 +118,8 @@ class AdminCategoriesController extends StandartController
         return true;
     }
 
-    public static function actionDelete($id) {
+    public static function actionDelete($id)
+    {
         $this->status = false;
         $this->errors = array();
         $this->message = '';
@@ -143,7 +144,7 @@ class AdminCategoriesController extends StandartController
             $categoryName => '',
         ];
 
-        if($action == 'delete' && $status == null){
+        if($action == 'delete' && $status == null) {
             $linkName = Links::getNameById($linkId);
             echo '<script> 
             var r=confirm(\'Do you want to delete link ' . $linkName .' in category ' . $categoryName . '?\');

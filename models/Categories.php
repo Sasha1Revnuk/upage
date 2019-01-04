@@ -66,7 +66,8 @@ class Categories
         }
     }
 
-    public static function delete($id) {
+    public static function delete($id)
+    {
         $db = Connection::getInstance();
         $connect = $db->get();
         $sql = $connect->prepare('DELETE FROM links WHERE category_id=?');

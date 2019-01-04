@@ -19,7 +19,8 @@ class Admin
 
     }
 
-    public static function progress($errors, $status, $message) {
+    public static function progress($errors, $status, $message)
+    {
         if (!empty($errors)) {
             Admin::errors($errors);
         }
