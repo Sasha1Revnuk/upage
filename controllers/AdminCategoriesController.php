@@ -11,10 +11,24 @@ class AdminCategoriesController extends StandartController
             'Add new category' => 'category-add',
         ];
         if (isset($_POST['add'])) {
+            //echo $_POST['name'];
+            $categories = Categories::getCategoriesById($this->userId);
+            //var_dump($categories);
             if (isset($_POST['name']) == false || empty($_POST['name'])) {
                 $this->errors[] = 'Name is empty. Try typing name please!';
-            } else if (!Categories::add($_POST['name'], $this->userId)) {
-                $this->errors[] = 'This is category is using! Type another name.';
+            }
+            foreach($categories as $category){
+                //var_dump($category);
+                if (in_array($_POST['name'], $category)) {
+                    $this->errors[] = 'This is category is using! Type another name.';
+                    break; 
+                }
+                
+            }
+            if (empty($this->errors)) {
+                if (!Categories::add($_POST['name'], $this->userId)) {
+                    $this->errors[] = 'Something is bad! Try in another time';
+                }
             }
 
             if (empty($this->errors)) {
@@ -88,7 +102,8 @@ class AdminCategoriesController extends StandartController
                 </script>';
             
         } else if ($action == 'delete' && $status == 'ok') {
-            Categories::delete($id);
+            $categoryName = Categories::getNameById($id);
+            Categories::delete($id, $categoryName, $this->userId);
             header('Location: /admin/category-list');
         }
         $categories = Categories::getCategoriesById($this->userId);
