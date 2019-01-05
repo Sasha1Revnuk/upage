@@ -13,7 +13,7 @@ class SiteController
             $categories = Categories::getCategoriesById($userId);
             $links = array();
             foreach($categories as $category) {
-                $links[] = Links::getLinksByCategoryId($category['id']);
+                $links[] = Links::getLinksByCategoryName($category['name'], $userId);
             }
             $status = true;
         }

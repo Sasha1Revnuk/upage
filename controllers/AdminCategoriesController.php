@@ -14,7 +14,7 @@ class AdminCategoriesController extends StandartController
             if (isset($_POST['name']) == false || empty($_POST['name'])) {
                 $this->errors[] = 'Name is empty. Try typing name please!';
             } else if (!Categories::add($_POST['name'], $this->userId)) {
-                $this->errors[] = 'Request is bad! Try in another time!';
+                $this->errors[] = 'This is category is using! Type another name.';
             }
 
             if (empty($this->errors)) {
@@ -54,7 +54,7 @@ class AdminCategoriesController extends StandartController
             }
 
             if (empty($this->errors)) {
-                if (!Links::add($_POST['name'], $_POST['link'], $_POST['categories'])) {
+                if (!Links::add($_POST['name'], $_POST['link'], $_POST['categories'], $this->userId)) {
                     $this->errors[] = 'Request is bad! Try in another time';
                 } else {
                     $this->status = true;
@@ -160,7 +160,7 @@ class AdminCategoriesController extends StandartController
             header('Location: /admin/category/edit/' . $id);
         }
 
-        $links = Links::getLinksByCategoryId($id);
+        $links = Links::getLinksByCategoryName($categoryName, $this->userId);
         if (empty($links)) {
             $this->errors[] = 'You need to create links! <a href="/admin/link-add">Do it!</a>';
         }
@@ -168,6 +168,8 @@ class AdminCategoriesController extends StandartController
             $idArray = array();
             $nameArray = array();
             $linkArray = array();
+            $categoryNameArray = array();
+            $userIdArray = array();
             $i=0;
             unset($_POST['Save']);
             foreach ($_POST as $link) {
@@ -178,12 +180,17 @@ class AdminCategoriesController extends StandartController
                     $nameArray[] = $link;
                 } else if ($i == 3) {
                     $linkArray[] = $link;
+
+                } else if ($i == 4) {
+                    $categoryNameArray[] = $link;
+                } else if ($i == 5) {
+                    $userIdArray[] = $link;
                     $i = 0;
                 }
             }
 
-            list($idArray, $nameArray, $linkArray) = Links::checkId($idArray, $nameArray, $linkArray, $id);
-            Links::updateLinks($idArray, $nameArray, $linkArray, $id);
+            //list($idArray, $nameArray, $linkArray, $categoryNameArray,  $userIdArray) = Links::checkId($idArray, $nameArray, $linkArray, $categoryNameArray,  $userIdArray);
+            Links::updateLinks($idArray,$nameArray, $linkArray, $categoryNameArray,  $userIdArray);
             header('Location: /admin/category/edit/' . $id);
         }
 

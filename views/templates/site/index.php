@@ -40,7 +40,7 @@
                 <?php
                 for($i = 0; $i < count($links); $i++){
                     foreach($links[$i] as $link){
-                        if($category['id'] == $link['category_id']) {
+                        if($category['name'] == $link['category_name']) {
                              echo '<li><a href="' . $link['link'] . '">' . $link['name'] . '</a></li>';
                         }
                             

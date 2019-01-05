@@ -84,8 +84,8 @@
             <?php
             for ($i = 0; $i < count($links); $i++) {
                 echo '<tr>';
-                echo '<td><input type="hidden" name="id' . $i . '" class="form-control" value="' . $links[$i]['id'] . '"><div class="col-lg-4 col-md-4"> <input type="text" name="name' . $i . '" class="form-control" value="' . $links[$i]['name'] . '"></div></td>';
-                echo '<td><div class="col-lg-4 col-md-4"> <input type="text" name="link' . $i . '" class="form-control" value="' . $links[$i]['link'] . '"></div></td>';
+                echo '<td><input type="hidden" name="id' . $i . '" class="form-control" value="' . $links[$i]['id'] . '"><div class="col-lg-4 col-md-4"> <input type="text" name="name' . $i . '" class="form-control" value="' . $links[$i]['name'] . '"> </div></td>';
+                echo '<td><div class="col-lg-4 col-md-4"> <input type="text" name="link' . $i . '" class="form-control" value="' . $links[$i]['link'] . '"> <input type="hidden" name="categoryName' . $i . '" class="form-control" value="' . $links[$i]['category_name'] . '"><input type="hidden" name="userId' . $i . '" class="form-control" value="' . $links[$i]['user_id'] . '"></div></td>';
                 echo '<td><a class="btn btn-danger" href="/admin/category/edit/' . $id .'/delete/' . $links[$i]['id'] . '"><i class="fa fa-trash-o "></i></a></td>'; 
                                                     
                 echo '</tr>';

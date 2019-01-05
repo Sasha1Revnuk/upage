@@ -1,21 +1,21 @@
 <?php
 class Links
 {
-    public static function add($name, $link, $categoryId)
+    public static function add($name, $link, $categoryName,  $userId)
     {
         $db = Connection::getInstance();
         $connect = $db->get();
-        $sql = $connect->prepare('INSERT INTO links (name, link, category_id) VALUES (?, ?, ?)');
-        $sql->bind_param('ssi', $name, $link, $categoryId);
+        $sql = $connect->prepare('INSERT INTO links (name, link, category_name, user_id) VALUES (?, ?, ?, ?)');
+        $sql->bind_param('sssi', $name, $link, $categoryName,  $userId);
         return $sql->execute();
     }
 
-    public static function getLinksByCategoryId($id)
+    public static function getLinksByCategoryName($categoryName, $userId)
     {
         $db = Connection::getInstance();
         $connect = $db->get();
-        $sql = $connect->prepare('SELECT * FROM links WHERE category_id=?');
-        $sql->bind_param('i', $id);
+        $sql = $connect->prepare('SELECT * FROM links WHERE category_name=? and user_id = ?');
+        $sql->bind_param('si', $categoryName, $userId);
         $sql->execute();
         $result = $sql->get_result();
  
@@ -27,25 +27,25 @@ class Links
         return $rows;
     }
 
-    public static function checkId($idArray, $nameArray, $linkArray, $id)
-    {
-        $Links = Links::getLinksByCategoryId($id);
-        $idDB = array();
-        foreach ($Links as $Link) {
-            $idDB[] = $Link['id'];
-        }
-        for ($i = 0; $i < count($idArray); $i++) {
-            if (in_array($idArray[$i], $idDB) == false) {
-                unset($idArray[$i]);
-                unset($nameArray[$i]);
-                unset($linkArray[$i]);
-            }
-        }
+    // public static function checkId($idArray, $nameArray, $linkArray, $categoryNameArray,  $userIdArray)
+    // {
+    //     $Links = Links::getLinksByCategoryName($categoryNameArray[0], $userIdArray[0]);
+    //     $idDB = array();
+    //     foreach ($Links as $Link) {
+    //         $idDB[] = $Link['id'];
+    //     }
+    //     for ($i = 0; $i < count($idArray); $i++) {
+    //         if (in_array($idArray[$i], $idDB) == false) {
+    //             unset($idArray[$i]);
+    //             unset($nameArray[$i]);
+    //             unset($linkArray[$i]);
+    //         }
+    //     }
 
-        return array($idArray, $nameArray, $linkArray);
-    }
+    //     return array($idArray, $nameArray, $linkArray);
+    // }
 
-    public static function updateLinks($idArray, $nameArray, $linkArray, $id)
+    public static function updateLinks($idArray, $nameArray, $linkArray, $categoryNameArray,  $userIdArray)
     {
         $ids = implode(',', array_fill(0, count($idArray), '?'));
         $types = str_repeat('i', count($idArray));
@@ -56,8 +56,8 @@ class Links
         $sql->execute();
 
         for ($i = 0; $i < count($nameArray); $i++) {
-            $sql = $connect->prepare('INSERT INTO links (name, link, category_id) VALUES (?,?,?)');
-            $sql->bind_param('ssi', $nameArray[$i], $linkArray[$i], $id);
+            $sql = $connect->prepare('INSERT INTO links (name, link, category_name, user_id) VALUES (?,?,?,?)');
+            $sql->bind_param('sssi', $nameArray[$i], $linkArray[$i], $categoryNameArray[$i],  $userIdArray[$i]);
             $sql->execute();
         }
     }
