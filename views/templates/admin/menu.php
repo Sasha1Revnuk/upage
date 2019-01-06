@@ -19,8 +19,8 @@
                                             <li>
                                                 <a href="#"><i class="fa fa-heart-o"></i><span class="text">User settings</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
-                                                    <li><a href="change-name"><i class="fa fa-pencil"></i><span class="text">Change name</span></a></li>
-                                                    <li><a href="change-password"><i class="fa fa-pencil"></i></i><span class="text">Change password</span></a></li>
+                                                    <li><a href="/admin/change-name"><i class="fa fa-pencil"></i><span class="text">Change name</span></a></li>
+                                                    <li><a href="/admin/change-password"><i class="fa fa-pencil"></i></i><span class="text">Change password</span></a></li>
                                                 </ul>
                                             </li>
                                             <li>

@@ -16,5 +16,7 @@ return array(
     'admin/category/edit/([0-9]+)' => 'adminCategories/edit/$1',
     'admin/category/edit/([0-9]+)/([a-z]+)/([0-9]+)' => 'adminCategories/delete/$1/$2/$3',
     'admin/category/edit/([0-9]+)/([a-z]+)/([0-9]+)/([a-z]+)' => 'adminCategories/delete/$1/$2/$3/$4',
+    'admin/change-name' => 'user/changeName',
+    'admin/change-password' => 'user/changePassword',
     '' => 'site/index'
 );

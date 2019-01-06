@@ -205,7 +205,7 @@ class User
 
     }
 
-    private static function changePassword($email, $password)
+    public static function changePassword($email, $password)
     {
         $db = Connection::getInstance();
         $connect = $db->get();
@@ -237,5 +237,14 @@ class User
         } 
             return $result['id'];
 
+    }
+
+    public static function changeName($userId, $name)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE users SET name=? WHERE id=?');
+        $sql->bind_param('si', $name, $userId);
+        return $sql->execute();
     }
 }

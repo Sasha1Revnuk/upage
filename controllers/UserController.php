@@ -72,4 +72,67 @@ class UserController
         return true;
 
     }
+
+    public static function actionChangeName()
+    {
+        $userId = User::getId($_COOKIE['Email']);
+        $status = false;
+        $message = '';
+        $errors = array();
+        $title = "Change name";
+        $breadCrumb = [
+            'Change name' => '/admin/change-name',
+        ];
+
+        if (isset($_POST['save'])) {
+            if (empty($_POST['name'])) {
+                $errors[] = 'Type your name!';
+            }
+
+            if (empty($errors)) {
+                if (!User::changeName($userId, $_POST['name'])) {
+                    $errors[] = 'Something is wrong!'; 
+                } else {
+                    $status = true;
+                    $message = 'Your new name: ' . $_POST['name'];
+                }
+            }
+        }
+
+        include_once ROOT . '/views/templates/admin/change-name.php';
+        return true;
+    }
+
+    public static function actionChangePassword()
+    {
+        $userId = User::getId($_COOKIE['Email']);
+        $status = false;
+        $message = '';
+        $errors = array();
+        $title = "Change password";
+        $breadCrumb = [
+            'Change password' => '/admin/change-password',
+        ];
+
+        if (isset($_POST['save'])) {
+            if (empty($_POST['password'])) {
+                $errors[] = 'Type your password!';
+            }
+
+            if ($_POST['password'] != $_POST['cpassword']) {
+                $errors[] = 'Pasword confirmation is wrong. Try again!';
+            }
+            if (empty($errors)) {
+                if (!User::changePassword($_COOKIE['Email'], $_POST['password'])) {
+                    $errors[] = 'Something is wrong!'; 
+                } else {
+                    $status = true;
+                    $message = 'You change password successfull!';
+                }
+            }
+        }
+
+        include_once ROOT . '/views/templates/admin/change-password.php';
+        return true;
+    }
 }
