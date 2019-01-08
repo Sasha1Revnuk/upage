@@ -26,7 +26,7 @@
                                             <li>
                                                 <a href="#"><i class="fa fa-font"></i><span class="text">Customize</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
-                                                    <li><a href="change-background"><i class="fa fa-list-alt"></i><span class="text">Change background image</span></a></li>
+                                                    <li><a href="/admin/change-background"><i class="fa fa-list-alt"></i><span class="text">Change background image</span></a></li>
                                                     <li><a href="change-category-text"><i class="fa fa-list-alt"></i><span class="text">Change category text color</span></a></li>
                                                     <li><a href="change-main-text-color"><i class="fa fa-list-alt"></i><span class="text">Change main text color</span></a></li>
                                                     <li><a href="change-addition-text-color"><i class="fa fa-list-alt"></i><span class="text">Change addition text color</span></a></li>

@@ -15,17 +15,47 @@
     ?>
            </div>           
        </div>
-<style>
-    a{
-        color:white;
-    }
-    a:visited{
-        color:white;
-    }
-    a:hover{
-        color:red;
-    }
-</style>
+<?php
+if (isset($user) == false || $user == 'Guest') {
+?>
+    <style>
+        body{
+            background: #14181E;
+        }
+        .sticky {
+            background: #14181E;
+        }
+        a{
+            color:white;
+        }
+        a:visited{
+            color:white;
+        }
+        a:hover{
+            color:red;
+        }
+
+        #features {
+        background: #090909 url(/Users/backgrounds/bg.jpg) no-repeat center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        color: white;
+        }
+
+        #features .section-intro h1 {
+        color: white;
+        }
+
+        footer {
+            color: #465166;
+        }
+    </style>
+<?php 
+} else {
+    require_once 'styles.php';
+}
+?>
+
        <div class="row features-content">
            <div class="features-list block-1-4 block-s-1-2 block-tab-full group ">
         <?php

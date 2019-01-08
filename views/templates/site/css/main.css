@@ -68,7 +68,7 @@ html, body {
     height: 100%;
 }
 body {
-    background: #14181E;
+   
     font-family: "merriweather-regular", serif;
     font-size: 1.6rem;
     line-height: 3rem;
@@ -849,7 +849,7 @@ header .logo a {
 }
 .sticky {
     position: fixed;
-    background: #14171c;
+   
     top: 0;
 }
 .sticky .logo a {
@@ -1527,17 +1527,12 @@ a.menu-toggle {
  */
 
 #features {
-    background: #090909 url(../images/bg.jpg) no-repeat center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
+   
     background-size: cover;
     padding-top: 12rem;
     padding-bottom: 12rem;
-    color: white;
 }
-#features .section-intro h1 {
-    color: white;
-}
+
 #features .section-intro h5 {
     color: rgba(255, 255, 255, 0.5);
 }
@@ -2163,7 +2158,7 @@ footer {
     font-size: 1.5rem;
     line-height: 2.7rem;
     font-family: "raleway-medium", sans-serif;
-    color: #465166;
+    
 }
 footer a, footer a:visited {
     color: #05bca9;

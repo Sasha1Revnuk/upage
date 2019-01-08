@@ -17,7 +17,8 @@ class SiteController
             }
             $status = true;
         }
-        
+        $userId = User::getId($_COOKIE['Email']);
+        $backgroundPath = Style::getStyles($userId);
         // echo '<pre>';
         // print_r($links);
         // echo '</pre>';
