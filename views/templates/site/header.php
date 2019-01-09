@@ -67,5 +67,45 @@
             <a class="menu-toggle" href=""><span>Menu</span></a>
            
        </div>       
-       
+       <?php
+if (isset($user) == false || $user == 'Guest') {
+?>
+    <style>
+        body{
+            background: #14181E;
+        }
+        .sticky {
+            background: #14181E;
+        }
+        a{
+            color:white;
+        }
+        a:visited{
+            color:white;
+        }
+        a:hover{
+            color:red;
+        }
+
+        #features {
+        background: #090909 url(/Users/backgrounds/bg.jpg) no-repeat center;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        color: white;
+        }
+
+        #features .section-intro h1 {
+        color: white;
+        }
+
+        footer {
+            color: #465166;
+        }
+    </style>
+<?php 
+} else {
+    require_once 'styles.php';
+}
+?>
+
    </header> <!-- /header -->

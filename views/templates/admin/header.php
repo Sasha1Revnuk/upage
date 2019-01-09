@@ -131,4 +131,6 @@ if (isset($_COOKIE['Email']) == false || $_COOKIE['Email'] == 'Guest' || empty($
         <?php require_once 'breadcrumb.php';?>
                 </div>
             </div>
-    
+    <?php
+   
+    ?>

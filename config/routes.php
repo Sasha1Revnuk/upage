@@ -19,5 +19,6 @@ return array(
     'admin/change-name' => 'user/changeName',
     'admin/change-password' => 'user/changePassword',
     'admin/change-background' => 'style/changeBackground',
+    'admin/change-category-text' => 'style/chagneCategoryColor',
     '' => 'site/index'
 );

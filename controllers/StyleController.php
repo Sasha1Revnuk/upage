@@ -46,4 +46,33 @@ class StyleController extends StandartController
         include_once ROOT . '/views/templates/admin/change-background.php';
         return true;
     }
+
+    public static function actionChagneCategoryColor()
+    {
+        $this->status = false;
+        $this->errors = array();
+        $this->message = '';
+        $title = 'Background';
+        $breadCrumb = [
+            'Chagne category color' => '/admin/change-category-text',
+        ];
+        $styles = Style::getStyles($this->userId);
+        if (isset($_POST['set'])) {
+            if (isset($_POST['color']) == false || empty($_POST['color'])) {
+                $this->errors[] = 'Choose color!';
+            }
+
+            if (empty($this->errors)) {
+                if (!Style::updateCategoryColor($this->userId, $_POST['color'])) {
+                    $this->errors[] = 'Something wrong! Try another time';
+                } else {
+                    $this->message = 'You set a new categories color!';
+                    $this->status = true;
+                }
+            }
+            
+        }
+        include_once ROOT . '/views/templates/admin/change-category-text.php';
+        return true;
+    }
 }

@@ -5,11 +5,12 @@
     .sticky {
         background: #14181E;
     }
+    
     a{
-        color:white;
+        color:<?=$backgroundPath[0]['cat_text_col']?>;
     }
     a:visited{
-        color:white;
+        color:<?=$backgroundPath[0]['cat_text_col']?>;
     }
     a:hover{
         color:red;

@@ -139,4 +139,13 @@ class Style
 
         return $rows;
     }
+    ///////
+    public static function updateCategoryColor($userId, $color)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET cat_text_col=? WHERE user_id=?');
+        $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
 }

@@ -16,9 +16,11 @@ class SiteController
                 $links[] = Links::getLinksByCategoryName($category['name'], $userId);
             }
             $status = true;
+
+            $backgroundPath = Style::getStyles($userId);
         }
-        $userId = User::getId($_COOKIE['Email']);
-        $backgroundPath = Style::getStyles($userId);
+        //$userId = User::getId($_COOKIE['Email']);
+       
         // echo '<pre>';
         // print_r($links);
         // echo '</pre>';
