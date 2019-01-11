@@ -748,7 +748,7 @@ button::-moz-focus-inner, input::-moz-focus-inner {
 }
 .section-intro .with-bottom-line::after {
     display: block;
-    background-color: #05bca9;
+
     width: 120px;
     height: 3px;
     content: '\0020';
@@ -936,9 +936,7 @@ a.menu-toggle {
     -ms-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
 }
-.main-navigation li.highlight a {
-    color: #05bca9;
-}
+
 .main-navigation li.with-sep a {
     position: relative;
     padding-left: 22px;
@@ -1533,12 +1531,7 @@ a.menu-toggle {
     padding-bottom: 12rem;
 }
 
-#features .section-intro h5 {
-    color: rgba(255, 255, 255, 0.5);
-}
-#features .section-intro p {
-    color: rgba(255, 255, 255, 0.7);
-}
+
 .features-content {
     max-width: 1200px;
 }
@@ -2160,9 +2153,7 @@ footer {
     font-family: "raleway-medium", sans-serif;
     
 }
-footer a, footer a:visited {
-    color: #05bca9;
-}
+
 footer a:hover, footer a:focus {
     color: #FFFFFF;
 }
@@ -2367,8 +2358,7 @@ footer ul li {
     width: 60px;
     line-height: 66px;
     text-align: center;
-    background: #048a7c;
-    color: #FFFFFF;
+    
     text-align: center;
     text-transform: uppercase;
     -moz-transition: all 0.3s ease-in-out;

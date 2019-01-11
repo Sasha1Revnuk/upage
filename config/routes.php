@@ -20,5 +20,11 @@ return array(
     'admin/change-password' => 'user/changePassword',
     'admin/change-background' => 'style/changeBackground',
     'admin/change-category-text' => 'style/chagneCategoryColor',
+    'admin/change-main-text-color' => 'style/changeMainTextColor',
+    'admin/change-addition-text-color' => 'style/changeAdditionTextColor',
+    'admin/change-text-background' => 'style/changeTextBackground',
+    'admin/change-footer-text-color' => 'style/changeFooterTextColor',
+    'admin/change-category-name-color' => 'style/changeCtegoryNameColor',
+    'admin/style-reset' => 'style/styleReset',
     '' => 'site/index'
 );

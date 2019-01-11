@@ -1,9 +1,10 @@
 <?php require_once 'header.php'?>
+<a name = "main-text"></a> 
     <section id="features">
 
         <div class="row section-intro">
            <div class="col-twelve with-bottom-line">
-
+            
                <h5>UPage</h5>
                <h1>Beautiful page for every day</h1>
 
@@ -13,11 +14,13 @@
         echo '<p class="lead">Create your links and make using much easyer!</p>';
     }
     ?>
-           </div>           
+           </div>  
+           <a name = "cat"></a>         
        </div>
-
+       
        <div class="row features-content">
            <div class="features-list block-1-4 block-s-1-2 block-tab-full group ">
+               
         <?php
         if($status == true) {
             foreach ($categories as $category){

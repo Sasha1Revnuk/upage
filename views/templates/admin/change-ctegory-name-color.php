@@ -17,10 +17,9 @@
 							<div class="panel-body">
 							<div id="sincos"  class="center" style="height: 500px" >
 								<iframe src="/#cat" width="100%" height="450px"></iframe>
-								<p>Select new color and hover color:</p>
+								<p>Select new color:</p>
 								<form action='' method="POST">
-									<input type="color" name="color" value="<?=$styles[0]['cat_text_col']?>">
-									<input type="color" name="hcolor" value="<?=$styles[0]['cat_hov_col']?>">
+									<input type="color" name="color" value="<?=$styles[0]['cat_name_col']?>">
 									<input type="submit" name="set" value="Set new color">
 								</form>
 							</div>
@@ -30,10 +29,5 @@
 
 				</div>
 				
-				
-			</div><!--/col-->
-
-		</div>
-		<!-- This is place for tasks -->
 
 <?php require_once 'footer.php';?>

@@ -18,6 +18,9 @@ class SiteController
             $status = true;
 
             $backgroundPath = Style::getStyles($userId);
+            $colorArr = explode(',', $backgroundPath[0]['add_text_col']);
+            $range = array_pop($colorArr);
+            $color = $colorArr[0] . ', ' . $colorArr[1] . ', ' .$colorArr[2]  . ', ' . $range;
         }
         //$userId = User::getId($_COOKIE['Email']);
        

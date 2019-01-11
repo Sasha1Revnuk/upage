@@ -140,12 +140,75 @@ class Style
         return $rows;
     }
     ///////
-    public static function updateCategoryColor($userId, $color)
+    public static function updateCategoryColor($userId, $color, $hcolor)
     {
         $db = Connection::getInstance();
         $connect = $db->get();
-        $sql = $connect->prepare('UPDATE styles SET cat_text_col=? WHERE user_id=?');
+        $sql = $connect->prepare('UPDATE styles SET cat_text_col=?, cat_hov_col=? WHERE user_id=?');
+        $sql->bind_param('ssi', $color,  $hcolor, $userId);
+        return $sql->execute();
+    }
+
+    public static function updateMainTextColor($userId, $color) 
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET main_text_col=? WHERE user_id=?');
         $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
+
+    public static function updateAdditionTextColor($userId, $color)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET add_text_col=? WHERE user_id=?');
+        $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
+
+    public static function updateTextBackgroundColor($userId, $color)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET text_back_col=? WHERE user_id=?');
+        $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
+
+    public static function updateFooterTextColor($userId, $color)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET footer_text_col=? WHERE user_id=?');
+        $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
+
+    public static function updateCtegoryNameColor($userId, $color)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE styles SET cat_name_col=? WHERE user_id=?');
+        $sql->bind_param('si', $color, $userId);
+        return $sql->execute();
+    }
+
+    public static function userStyleDel($userId)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('DELETE FROM styles WHERE user_id=?');
+        $sql->bind_param('i', $userId);
+        return $sql->execute();
+    }
+
+    public static function userStyleAdd($userId)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('INSERT INTO styles (user_id) VALUES (?)');
+        $sql->bind_param('i', $userId);
         return $sql->execute();
     }
 }

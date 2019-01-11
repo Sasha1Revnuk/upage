@@ -18,7 +18,11 @@ class UserController
 
         if ($registration == true && is_array($registration) == false) {
             User::createDir($_POST['email']);
+            $userId = User::getId($_POST['email']);
+            Style::userStyleAdd($userId);
+
         }
+        
         $title = 'Sign up!';
         include_once ROOT . '/views/templates/site/regist.php';
         return true;
@@ -36,7 +40,7 @@ class UserController
             if ($email != null && isset($_POST['remeber']) && $_POST['remeber'] == "on") {
                 User::remembered($email);
             } else {
-                setcookie('Email',  $email, time() + 60);
+                setcookie('Email',  $email, time() + 1200);
             }
         }
         if ($email != null) {

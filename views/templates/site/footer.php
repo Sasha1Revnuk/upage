@@ -1,7 +1,7 @@
 <footer>
 <!-- /footer-main -->
 
-
+<a name = "footer"></a>
       <div class="footer-bottom">
 
       	<div class="row">

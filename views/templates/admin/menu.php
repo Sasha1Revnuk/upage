@@ -27,11 +27,13 @@
                                                 <a href="#"><i class="fa fa-font"></i><span class="text">Customize</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
                                                     <li><a href="/admin/change-background"><i class="fa fa-list-alt"></i><span class="text">Change background image</span></a></li>
-                                                    <li><a href="change-category-text"><i class="fa fa-list-alt"></i><span class="text">Change category text color</span></a></li>
-                                                    <li><a href="change-main-text-color"><i class="fa fa-list-alt"></i><span class="text">Change main text color</span></a></li>
-                                                    <li><a href="change-addition-text-color"><i class="fa fa-list-alt"></i><span class="text">Change addition text color</span></a></li>
-                                                    <li><a href="change-text-background"><i class="fa fa-list-alt"></i><span class="text">Change text background</span></a></li>
-                                                    <li><a href="change-footer-text-color"><i class="fa fa-list-alt"></i><span class="text">Change footer text color</span></a></li>
+                                                    <li><a href="/admin/change-category-name-color"><i class="fa fa-list-alt"></i><span class="text">Change categ name color</span></a></li>
+                                                    <li><a href="/admin/change-category-text"><i class="fa fa-list-alt"></i><span class="text">Change category text color</span></a></li>
+                                                    <li><a href="/admin/change-main-text-color"><i class="fa fa-list-alt"></i><span class="text">Change main text color</span></a></li>
+                                                    <li><a href="/admin/change-addition-text-color"><i class="fa fa-list-alt"></i><span class="text">Change addition text color</span></a></li>
+                                                    <li><a href="/admin/change-text-background"><i class="fa fa-list-alt"></i><span class="text">Change text background</span></a></li>
+                                                    <li><a href="/admin/change-footer-text-color"><i class="fa fa-list-alt"></i><span class="text">Change footer text color</span></a></li>
+                                                    <li><a href="/admin/style-reset"><i class="fa fa-list-alt"></i><span class="text">Reset settings</span></a></li>
                                                 </ul>
                                             </li>
                                             <li>

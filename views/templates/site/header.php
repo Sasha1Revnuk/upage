@@ -101,6 +101,28 @@ if (isset($user) == false || $user == 'Guest') {
         footer {
             color: #465166;
         }
+
+        #features .section-intro h5 {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    #features .section-intro p {
+        color: rgba(255, 255, 255, 0.7);
+    }
+    #go-top a {
+        background: #048a7c;
+        color: #FFFFFF;
+    }
+
+    .main-navigation li.highlight a {
+        color: #05bca9;
+    }
+    .section-intro .with-bottom-line::after {
+        background-color: #05bca9;
+    }
+
+    footer a, footer a:visited {
+        color: #05bca9;
+    }
     </style>
 <?php 
 } else {
