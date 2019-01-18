@@ -26,5 +26,6 @@ return array(
     'admin/change-footer-text-color' => 'style/changeFooterTextColor',
     'admin/change-category-name-color' => 'style/changeCtegoryNameColor',
     'admin/style-reset' => 'style/styleReset',
+    'admin/users' => 'admin/userlist',
     '' => 'site/index'
 );

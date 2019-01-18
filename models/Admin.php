@@ -29,4 +29,20 @@ class Admin
             Admin::successfull($status, $message);
         }
     }
+
+    public static function getUsers()
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('SELECT * FROM users');
+        $sql->execute();
+        $result = $sql->get_result();
+ 
+        $rows = [];
+        while ($row = mysqli_fetch_assoc($result)) {
+            $rows[] = $row;
+        }
+
+        return $rows;
+    }
 }

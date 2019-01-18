@@ -7,7 +7,7 @@
                                     </div>
                                     <div class="sidebar-menu">
                                         <ul class="nav nav-sidebar">
-                                            <li><a href="/main"><i class="fa fa-laptop"></i><span class="text"> Main</span></a></li>
+                                            <li><a href="/admin/main"><i class="fa fa-laptop"></i><span class="text"> Main</span></a></li>
                                             <li>
                                                 <a href="#"><i class="fa fa-file-text"></i><span class="text">Categories</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
@@ -36,12 +36,14 @@
                                                     <li><a href="/admin/style-reset"><i class="fa fa-list-alt"></i><span class="text">Reset settings</span></a></li>
                                                 </ul>
                                             </li>
+                                            <?php if (Header::getStatus($_COOKIE['Email']) == 'root') {?>
                                             <li>
                                                 <a href="#"><i class="fa fa-lock"></i>	<span class="text">Admins</span> <span class="fa fa-angle-down pull-right"></span></a>
                                                 <ul class="nav sub">
-                                                    <li><a href="users"><i class="fa fa-columns"></i><span class="text">Users</span></a></li>
+                                                    <li><a href="/admin/users"><i class="fa fa-columns"></i><span class="text">Users</span></a></li>
                                                 </ul>
                                             </li>
+                                            <?php }?>
                                         </ul>
                                     </div>					
                                 </div>
