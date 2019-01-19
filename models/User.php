@@ -92,6 +92,17 @@ class User
 
     public static function checkAuthorization()
     {
+        $email = null;
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('SELECT * FROM users WHERE email=?');
+        $sql->bind_param('s', $_COOKIE['Email']);
+        $sql->execute();
+        $result = $sql->get_result();
+        $result = mysqli_fetch_array($result);
+        if (empty($result)) {
+            return 'Guest';
+        }
         if (!isset($_COOKIE['Email'])) {
             return 'Guest';
         } else {

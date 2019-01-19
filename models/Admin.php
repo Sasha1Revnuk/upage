@@ -45,4 +45,30 @@ class Admin
 
         return $rows;
     }
+
+    public static function getById($id)
+    {
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('SELECT * FROM users WHERE id=?');
+        $sql->bind_param('i', $id);
+        $sql->execute();
+        $result = $sql->get_result();
+        $result = mysqli_fetch_array($result);
+        if (!empty($result)) {
+            return $result;
+        } else {
+            return null;
+        }
+    }
+
+    public static function updateUser($id, $name, $email, $status, $oldemail)
+    {
+        rename("Users/" . $oldemail, "Users/" . $email);
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('UPDATE users SET name=?, email=?, status=? WHERE id=?');
+        $sql->bind_param('sssi', $name, $email, $status, $id);
+        return $sql->execute();
+    }
 }

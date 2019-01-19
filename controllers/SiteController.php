@@ -7,10 +7,11 @@ class SiteController
         $status = false;
         $user = User::checkAuthorization();
         $title = 'Main page';
-        if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email']) && $_COOKIE['Email'] !='Guest') {
+        if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email']) && $_COOKIE['Email'] !='Guest' && $user !='Guest') {
             $userId = User::getId($_COOKIE['Email']);
-
+           //var_dump($userId);
             $categories = Categories::getCategoriesById($userId);
+           
             $links = array();
             foreach($categories as $category) {
                 $links[] = Links::getLinksByCategoryName($category['name'], $userId);
@@ -21,12 +22,17 @@ class SiteController
             $colorArr = explode(',', $backgroundPath[0]['add_text_col']);
             $range = array_pop($colorArr);
             $color = $colorArr[0] . ', ' . $colorArr[1] . ', ' .$colorArr[2]  . ', ' . $range;
+        } else {
+            if(isset($_COOKIE['Email']) && !empty($_COOKIE['Email'])) {
+                User::logout();
+            }
         }
         //$userId = User::getId($_COOKIE['Email']);
        
         // echo '<pre>';
         // print_r($links);
         // echo '</pre>';
+       
         include_once ROOT . '/views/templates/site/index.php';
         return true;
     }
