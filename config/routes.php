@@ -27,6 +27,8 @@ return array(
     'admin/change-category-name-color' => 'style/changeCtegoryNameColor',
     'admin/style-reset' => 'style/styleReset',
     'admin/users/edit/([0-9]+)' => 'admin/userEdit/$1',
+    'admin/users/([a-z]+)/([0-9]+)/([a-z]+)' => 'admin/userlist/$1/$2/$3',
+    'admin/users/([a-z]+)/([0-9]+)' => 'admin/userlist/$1/$2',
     'admin/users' => 'admin/userlist',
     '' => 'site/index'
 );

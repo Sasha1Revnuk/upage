@@ -71,4 +71,22 @@ class Admin
         $sql->bind_param('sssi', $name, $email, $status, $id);
         return $sql->execute();
     }
+
+    public static function deleteUser($id, $email)
+    {
+        
+        $dir = realpath(__DIR__ . '/../Users/'. $email);
+        $di = new RecursiveDirectoryIterator($dir, FilesystemIterator::SKIP_DOTS);
+        $ri = new RecursiveIteratorIterator($di, RecursiveIteratorIterator::CHILD_FIRST);
+        foreach ( $ri as $file ) {
+            $file->isDir() ?  rmdir($file) : unlink($file);
+        }
+        rmdir(realpath(__DIR__ . '/../Users/'. $email));
+        $db = Connection::getInstance();
+        $connect = $db->get();
+        $sql = $connect->prepare('DELETE FROM users WHERE id=?');
+        $sql->bind_param('i', $id);
+        $sql->execute();
+        return $sql->execute();
+    }
 }

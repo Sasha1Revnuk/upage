@@ -13,7 +13,7 @@ class AdminController
         return true;
     }
 
-    public static function actionUserlist()
+    public static function actionUserlist($action=null, $id=null, $statuss=null)
     {
         $status = false;
         $errors = array();
@@ -22,6 +22,24 @@ class AdminController
         $breadCrumb = [
             'Users' => '/admin/users',
         ];
+
+        if($action == 'delete' && $statuss == null) {
+            $user = Admin::getById($id);
+            echo '<script> 
+            var r=confirm(\'Do you want to delete user with email ' .$user['email'] .' ?\');
+            if(r){
+                document.location.href = \'/admin/users/delete/' . $id . '/ok\';
+            } else {
+                document.location.href = \'/admin/users\';
+            }
+                </script>';
+            
+        } else if ($action == 'delete' && $statuss == 'ok') {
+            $user = Admin::getById($id);
+            Admin::deleteUser($id, $user['email']);
+            //header('Location: /admin/users');
+
+        }
         $users = Admin::getUsers();
         include_once ROOT . '/views/templates/admin/users.php';
         return true;
