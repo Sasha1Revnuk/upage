@@ -37,7 +37,7 @@ class AdminController
         } else if ($action == 'delete' && $statuss == 'ok') {
             $user = Admin::getById($id);
             Admin::deleteUser($id, $user['email']);
-            //header('Location: /admin/users');
+            header('Location: /admin/users');
 
         }
         $users = Admin::getUsers();
